@@ -31,7 +31,7 @@ sudo a2enmod php8.3
 sudo systemctl restart apache2
 
 # Define password for MYSQL
-MYSQL_PWD="seyipasswd"
+MYSQL_PWD="victoriapasswd"
 
 # Define new database parameters
 username="victoria"
