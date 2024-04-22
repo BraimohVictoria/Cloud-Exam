@@ -1,0 +1,21 @@
+---
+- name: Install LAMP stack
+  hosts: Slave
+  become: yes
+  tasks:
+    - name: Copy bash script to Slave node
+      copy:
+        src: /home/vagrant/exam.sh
+        dest: /home/vagrant/exam.sh
+        mode: 0755
+
+    - name: Execute bash script to setup LAMP stack
+      command: /home/vagrant/exam.sh
+
+    - name: Create cron job
+      cron:
+        name: "uptime check"
+        minute: "0"
+        hour: "0"
+        job: "/usr/bin/uptime >> /home/vagrant/uptime.log"
+        state: present
